@@ -32,7 +32,16 @@
 
     <script>
         const frame = document.getElementById('frame');
-        const array = []
+        let squareColor = 'purple';
+
+        // Change the color based on key press
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'b') squareColor = 'blue';
+          else if (e.key === 'r') squareColor = 'red';
+          else if (e.key === 'y') squareColor = 'yellow';
+          else if (e.key === 'w') squareColor = 'white';
+          else if (e.key === 'g') squareColor = 'green';
+        });
 
         frame.addEventListener('mousemove', function (e) {
           let square = document.createElement('div');
@@ -41,8 +50,7 @@
 
           square.style.left = e.clientX + 'px';
           square.style.top = e.clientY + 'px';
-
-          array.push(square);
+          square.style.background = squareColor;
 
           // animate the squares
           square.style.transition = 3 * Math.random() + 's linear';
@@ -55,9 +63,8 @@
           // remove the square after animation
           setTimeout(function () {
             square.remove();
-          }, 1000);
+          }, 3000);
         });
     </script>
 </body>
 </html>
-
