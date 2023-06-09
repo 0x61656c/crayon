@@ -14,6 +14,7 @@
           width: 100%;
           height: 90%;
           overflow: hidden;
+          background-color: black;
         }
 
         .square {
@@ -34,11 +35,14 @@
           background-color: 
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>    
 </head>
 <body>
     <div id="frame">
     </div>
     <div id = "crayon-box">
+        <p>Click to save</p>
         <p>
           Hotkeys: b - blue, r - red, y - yellow, w - white, g - green, p - purple, o - orange
         </p>
@@ -81,6 +85,16 @@
             square.remove();
           }, 3000);
         });
+
+        document.body.addEventListener('click', function (e) {
+          html2canvas(document.querySelector("#frame")).then(function (canvas) {
+            // convert canvas to blob and save the file
+            canvas.toBlob(function(blob) {
+              saveAs(blob, "screenshot.png");
+            });
+          });
+        });
+
     </script>
 </body>
 </html>
