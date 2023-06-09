@@ -78,17 +78,8 @@
           square.style.background = squareColor;
 
           // animate the squares
-          square.style.transition = 3 * Math.random() + 's linear';
-          square.style.left = square.offsetLeft + (500 * Math.random() * (2 * ((0-1) ** Math.random())).floor()) + 'px';
-          square.style.top = square.offsetTop + (500 * Math.random()) + 'px';
-          square.style.width = '0';
-          square.style.height = '0';
-          square.style.opacity = '0';
-
-          // remove the square after animation
-          setTimeout(function () {
-            square.remove();
-          }, 3000);
+          square.style.left = square.offsetLeft + 'px';
+          square.style.top = square.offsetTop + 'px';          
         });
     </script>
 </body>
