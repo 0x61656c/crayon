@@ -41,9 +41,8 @@
     <div id="frame">
     </div>
     <div id = "crayon-box">
-        <p>Click to save</p>
         <p>
-          Hotkeys: b - blue, r - red, y - yellow, w - white, g - green, p - purple, o - orange
+          Hotkeys: b - blue, r - red, y - yellow, w - white, g - green, p - purple, o - orange, s - save image
         </p>
     </div>
 
@@ -60,6 +59,13 @@
           else if (e.key === 'g') squareColor = 'green';
           else if (e.key === 'p') squareColor = 'purple';
           else if (e.key === 'o') squareColor = 'orange';
+          else if (e.key === 's') {
+            html2canvas(frame).then(function(canvas) {
+              canvas.toBlob(function(blob) {
+                saveAs(blob, "your-crayon-output.png");
+              });
+            });
+          }
         });
 
         frame.addEventListener('mousemove', function (e) {
@@ -84,16 +90,6 @@
             square.remove();
           }, 3000);
         });
-
-        document.body.addEventListener('click', function (e) {
-          html2canvas(document.querySelector("#frame")).then(function (canvas) {
-            // convert canvas to blob and save the file
-            canvas.toBlob(function(blob) {
-              saveAs(blob, "screenshot.png");
-            });
-          });
-        });
-
     </script>
 </body>
 </html>
